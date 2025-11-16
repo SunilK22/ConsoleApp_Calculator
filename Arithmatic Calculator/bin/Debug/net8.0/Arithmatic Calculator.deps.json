@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v8.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v8.0": {
+      "Arithmatic Calculator/1.0.0": {
+        "runtime": {
+          "Arithmatic Calculator.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "Arithmatic Calculator/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}
