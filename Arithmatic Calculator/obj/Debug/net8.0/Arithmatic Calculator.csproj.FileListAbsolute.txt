@@ -12,3 +12,4 @@ D:\Code\Calculator\Arithmatic Calculator\obj\Debug\net8.0\refint\Arithmatic Calc
 D:\Code\Calculator\Arithmatic Calculator\obj\Debug\net8.0\Arithmatic Calculator.pdb
 D:\Code\Calculator\Arithmatic Calculator\obj\Debug\net8.0\Arithmatic Calculator.genruntimeconfig.cache
 D:\Code\Calculator\Arithmatic Calculator\obj\Debug\net8.0\ref\Arithmatic Calculator.dll
+D:\Code\Calculator\Arithmatic Calculator\obj\Debug\net8.0\Arithmatic Calculator.sourcelink.json
