@@ -1,6 +1,6 @@
 ﻿using Arithmatic_Calculator;
 
-class calculatorMain: CalculatorMethods
+class calculatorMain
 {
     static double result;
     public static void Main(string[] args)

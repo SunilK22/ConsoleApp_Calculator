@@ -10,7 +10,7 @@ namespace Arithmatic_Calculator
     {
         private const string DivideByZeroError = "Cannot divide by 0";
 
-        private double GetInputNumber()
+        public double GetInputNumber()
         {
             string num = Console.ReadLine();
             if (double.TryParse(num, out double value))
@@ -26,7 +26,7 @@ namespace Arithmatic_Calculator
             }
         }
 
-        private string GetOperator()
+        public string GetOperator()
         {
             Console.WriteLine("Select Operator (+, -, *, /, %)");
             string op = Console.ReadLine();
@@ -45,7 +45,7 @@ namespace Arithmatic_Calculator
 
         }
 
-        private void PerformOperation(double firstNum, string op, double nextNum, double result)
+        public void PerformOperation(double firstNum, string op, double nextNum, double result)
         {
             bool hasError = false;
 
@@ -94,6 +94,7 @@ namespace Arithmatic_Calculator
 
         private void ClearAll( ConsoleKeyInfo keyPressed)
         {
+            LineBreak();
 
             if (keyPressed.Key == ConsoleKey.Backspace)
             {
@@ -118,6 +119,7 @@ namespace Arithmatic_Calculator
 
         private void ContinueOperation(double firstNum, double result, ConsoleKeyInfo keyPressed)
         {
+            LineBreak();
 
             if (keyPressed.Key == ConsoleKey.Tab)
             {
@@ -148,6 +150,11 @@ namespace Arithmatic_Calculator
 
             ClearAll(keyPressed);
             return keyPressed;
+        }
+
+        private void LineBreak()
+        {
+            Console.WriteLine("----------------------------------------------");
         }
 
 
