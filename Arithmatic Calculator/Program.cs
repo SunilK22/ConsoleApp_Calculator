@@ -10,7 +10,7 @@ class calculatorMain
         Console.WriteLine("Enter First Number: ");
         double firstNum = cm.GetInputNumber();
 
-        string arthOperator = cm.GetOperator();
+        char arthOperator = cm.GetOperator();
 
         Console.WriteLine("Enter Another Number: ");
         double nextNum = cm.GetInputNumber();

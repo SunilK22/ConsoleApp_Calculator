@@ -12,7 +12,8 @@ namespace Arithmatic_Calculator
 
         public double GetInputNumber()
         {
-            string num = Console.ReadLine();
+            string num = ReadNumberLive();
+
             if (double.TryParse(num, out double value))
             {
                 return value;
@@ -26,41 +27,42 @@ namespace Arithmatic_Calculator
             }
         }
 
-        public string GetOperator()
+        public char GetOperator()
         {
             Console.WriteLine("Select Operator (+, -, *, /, %)");
-            string op = Console.ReadLine();
 
-            if (op == "+" || op == "-" || op == "*" || op == "/" || op == "%")
+            while (true)
             {
-                return op;
+                ConsoleKeyInfo key = Console.ReadKey(true);
+                char ch = key.KeyChar;
 
-            }
-            else
-            {
-                Console.WriteLine("Invalid Operator Provided.");
-                HandleKeyPress();
-                return "";
+                if (ch == '+' || ch == '-' || ch == '*' || ch == '/')
+                {
+                    Console.WriteLine(ch);
+                    return ch;
+                }
+
+                Console.Beep();  // invalid input
             }
 
         }
 
-        public void PerformOperation(double firstNum, string op, double nextNum, double result)
+        public void PerformOperation(double firstNum, char op, double nextNum, double result)
         {
             bool hasError = false;
 
             switch (op)
             {
-                case "+":
+                case '+':
                     result = firstNum + nextNum;
                     break;
-                case "-":
+                case '-':
                     result = firstNum - nextNum;
                     break;
-                case "*":
+                case '*':
                     result = firstNum * nextNum;
                     break;
-                case "/":
+                case '/':
                     if (nextNum == 0)
                     {
                         Console.WriteLine(DivideByZeroError);
@@ -71,7 +73,7 @@ namespace Arithmatic_Calculator
                         result = firstNum / nextNum;
                     }
                     break;
-                case "%":
+                case '%':
                     result = firstNum % nextNum;
                     break;
                 default:
@@ -92,7 +94,7 @@ namespace Arithmatic_Calculator
             ContinueOperation(firstNum, result, keyPressed);
         }
 
-        private void ClearAll( ConsoleKeyInfo keyPressed)
+        private void ClearAll(ConsoleKeyInfo keyPressed)
         {
             LineBreak();
 
@@ -102,7 +104,7 @@ namespace Arithmatic_Calculator
                 Console.WriteLine("Enter First Number: ");
                 double firstNum = GetInputNumber();
 
-                string op = GetOperator();
+                char op = GetOperator();
 
                 Console.WriteLine("Enter Another Number: ");
                 double nextNum = GetInputNumber();
@@ -125,7 +127,7 @@ namespace Arithmatic_Calculator
             {
                 firstNum = result;
 
-                string op = GetOperator();
+                char op = GetOperator();
 
                 Console.WriteLine("Enter Another Number: ");
                 double nextNum = GetInputNumber();
@@ -151,6 +153,60 @@ namespace Arithmatic_Calculator
             ClearAll(keyPressed);
             return keyPressed;
         }
+
+
+        private static string ReadNumberLive()
+        {
+            string input = "";
+
+            while (true)
+            {
+                ConsoleKeyInfo key = Console.ReadKey(true);
+
+                if (key.Key == ConsoleKey.Enter)
+                {
+                    Console.WriteLine();
+                    return input;
+                }
+
+                if (key.Key == ConsoleKey.Backspace)
+                {
+                    if (input.Length > 0)
+                    {
+                        input = input.Substring(0, input.Length - 1);
+                        Console.Write("\b \b");
+                    }
+                    else
+                    {
+                        Console.Beep(); // nothing to delete
+                    }
+                    continue;
+                }
+
+                char ch = key.KeyChar;
+
+                if (char.IsDigit(ch))
+                {
+                    input += ch;
+                    Console.Write(ch);
+                }
+                else if (ch == '.' && !input.Contains('.'))
+                {
+                    input += ch;
+                    Console.Write(ch);
+                }
+                else if (ch == '-' && input.Length == 0)
+                {
+                    input += ch;
+                    Console.Write(ch);
+                }
+                else
+                {
+                    Console.Beep(); // invalid key
+                }
+            }
+        }
+
 
         private void LineBreak()
         {
